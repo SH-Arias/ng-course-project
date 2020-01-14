@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Recipe } from '../../recipe.model';
 
 @Component({
@@ -8,15 +10,12 @@ import { Recipe } from '../../recipe.model';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-  @Output() recipeClicked = new EventEmitter<void>();
+  @Input() index: number;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-  }
-
-  onClick() {
-    this.recipeClicked.emit();
   }
 
 }
